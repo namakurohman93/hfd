@@ -5,10 +5,12 @@ function toggleSection() {
       $('#login-section').fadeIn(100);
     });
     updateUsername();
+    initState();
   } else {
     $('#login-section').fadeOut(100, function() {
       $('#not-login-section').fadeIn(100);
     });
+    emptyState();
   }
 }
 

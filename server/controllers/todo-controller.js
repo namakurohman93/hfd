@@ -11,8 +11,9 @@ class TodoController {
 
   static createTodo(req, res, next) {
     Todo.create({
+      name: req.body.name,
       description: req.body.description,
-      dueDate: req.body.dueDate,
+      dueDate: new Date(req.body.dueDate),
       owner: req.payload.id,
     })
       .then(todo => {
@@ -44,10 +45,12 @@ class TodoController {
     Todo.findById(req.params.todoId)
       .then(todo => {
         if (!todo) throw {name: 'NotFound', message: 'Todo not found'};
+        todo.name = req.body.name || todo.name;
         todo.description = req.body.description || todo.description;
         todo.dueDate = req.body.dueDate
           ? new Date(req.body.dueDate)
-          : todo.dueDate;
+          : new Date(todo.dueDate);
+        todo.status = req.body.status || todo.status;
 
         return todo.save();
       })

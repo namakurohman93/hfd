@@ -1,6 +1,8 @@
-const todoLists = [];
-const todayTodoLists = [];
-const tomorrowTodoLists = [];
-const thisWeekTodoLists = [];
-const overdueTodoLists = [];
-const doneTodoLists = [];
+const state = {
+  todoList: [],
+  todayTodoList: [],
+  tomorrowTodoList: [],
+  overdueTodoList: [],
+  doneTodoList: [],
+  furtherTodoList: [],
+};

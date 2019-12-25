@@ -101,3 +101,7 @@ input[type="email"]:focus {
   -moz-box-shadow: 6px 9px 24px -7px rgba(33,76,128,0.8);
   box-shadow: 6px 9px 24px -7px rgba(33,76,128,0.8);
 }
+
+#nothing-todo {
+  opacity: 0.2;
+}

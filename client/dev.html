@@ -238,31 +238,31 @@
               </button>
             </div>
             <button class="list-group-item list-group-item-action">
-              All <span class="badge badge-dark">47</span>
+              All <span class="badge badge-dark" id="all-todo-list">0</span>
             </button>
             <button class="list-group-item list-group-item-action">
-              Today <span class="badge badge-dark">14</span>
+              Today <span class="badge badge-dark" id="today-todo-list">0</span>
             </button>
             <button class="list-group-item list-group-item-action">
-              Tomorrow <span class="badge badge-dark">4</span>
+              Tomorrow
+              <span class="badge badge-dark" id="tomorrow-todo-list">0</span>
             </button>
             <button class="list-group-item list-group-item-action">
-              This Week <span class="badge badge-dark">0</span>
-            </button>
-            <button class="list-group-item list-group-item-action">
-              This Month <span class="badge badge-dark">2</span>
+              Further
+              <span class="badge badge-dark" id="further-todo-list">0</span>
             </button>
             <button
               class="list-group-item list-group-item-action"
               id="custom-overdue-btn"
             >
-              Overdue <span class="badge badge-dark">12</span>
+              Overdue
+              <span class="badge badge-dark" id="overdue-todo-list">0</span>
             </button>
             <button
               class="list-group-item list-group-item-action"
               id="custom-done-btn"
             >
-              Done <span class="badge badge-dark">9</span>
+              Done <span class="badge badge-dark" id="done-todo-list">0</span>
             </button>
           </div>
 
@@ -275,7 +275,10 @@
             <!-- add new todo form -->
             <div class="row d-flex justify-content-center mt-5">
               <div class="col-lg-8" id="new-todo-form" style="display: none;">
-                <form class="w-auto mx-auto shadow-lg p-4 rounded">
+                <form
+                  class="w-auto mx-auto shadow-lg p-4 rounded"
+                  onsubmit="addNewTodo(event)"
+                >
                   <button
                     type="button"
                     class="close"
@@ -291,6 +294,7 @@
                       type="text"
                       class="form-control"
                       placeholder="Name"
+                      id="todo-name"
                       required
                     />
                   </div>
@@ -299,6 +303,7 @@
                       type="text"
                       class="form-control"
                       placeholder="Description"
+                      id="todo-description"
                       required
                     />
                   </div>
@@ -310,6 +315,7 @@
                         type="text"
                         class="form-control"
                         placeholder="Date"
+                        id="todo-date"
                         required
                       />
                       <span class="input-group-append">
@@ -393,6 +399,7 @@
     <script src="src/session-handler.js"></script>
     <script src="src/components-updater.js"></script>
     <script src="src/components-handler.js"></script>
+    <script src="src/components.js"></script>
     <script src="src/main.js"></script>
   </body>
 </html>

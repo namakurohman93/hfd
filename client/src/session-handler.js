@@ -29,8 +29,7 @@ function login(e) {
       localStorage.setItem('token', data.token);
       localStorage.setItem('username', data.username);
 
-      $('#loginEmail').val('');
-      $('#loginPassword').val('');
+      emptyLoginForm();
 
       toggleSection();
     })
@@ -83,9 +82,7 @@ function register(e) {
       localStorage.setItem('token', data.token);
       localStorage.setItem('username', data.username);
 
-      $('#registerEmail').val('');
-      $('#registerPassword').val('');
-      $('#registerUsername').val('');
+      emptyRegisterForm();
 
       toggleSection();
     })
@@ -125,5 +122,6 @@ function logout(e) {
     timer: 1500,
     showConfirmButton: false,
   });
+
   toggleSection();
 }
