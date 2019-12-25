@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link rel="icon" href="todo-icon.png" />
+    <link rel="stylesheet" href="styles/custom.css" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="src/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="src/bootstrap/css/bootstrap-datepicker.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="src/bootstrap/css/bootstrap-timepicker.min.css"
+    />
+
+    <!-- font-awesome -->
+    <script src="src/fontawesome/js/all.min.js"></script>
+
+    <title>Simple-Todo</title>
+  </head>
+  <body>
+    <!-- Not login section -->
+    <div id="not-login-section">
+      <!-- normal navbar -->
+      <nav
+        id="normal-navbar"
+        class="navbar navbar-light fixed-top"
+        style="background-color: #3d77bc;"
+      >
+        <div class="container d-flex justify-content-between">
+          <a
+            class="navbar-brand text-white"
+            href="#"
+            onclick="showLandingPage(event)"
+          >
+            <img
+              src="todo-icon.png"
+              width="30"
+              height="30"
+              class="d-inline-block align-top"
+            />
+            Simple-Todo
+          </a>
+          <div>
+            <button
+              type="button"
+              class="btn btn-outline-light"
+              style="border-radius: 0;"
+              onclick="showLoginForm(event)"
+            >
+              Login
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-light"
+              style="border-radius: 0;"
+              onclick="showRegisterForm(event)"
+            >
+              Register
+            </button>
+          </div>
+        </div>
+      </nav>
+      <!-- end of normal navbar -->
+
+      <!-- landing-page -->
+      <div class="container my-5" id="landing-page">
+        <div class="p-5" style="border: 1px solid #3d77bc;">
+          <h1 class="display-4">Simple-Todo</h1>
+          <hr style="border-color: inherit" />
+          <p>Simplify your life</p>
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-md-4">
+            <div class="p-4" style="border: 1px solid #3d77bc;">
+              <h2>Simple <span class="fab fa-wpexplorer"></span></h2>
+              <hr style="border-color: inherit;" />
+              <p>It has simple appeareance so you can use it easly.</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-4" style="border: 1px solid #3d77bc;">
+              <h2>Easy <span class="fas fa-signature"></span></h2>
+              <hr style="border-color: inherit;" />
+              <p>It has made so easy so everyone can use it.</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-4" style="border: 1px solid #3d77bc;">
+              <h2>To the point <span class="fab fa-pushed"></span></h2>
+              <hr style="border-color: inherit;" />
+              <p>It only has feature that you really need as Todo-List.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end of landing-page -->
+
+      <!-- login form -->
+      <div class="container" style="display: none;" id="login-form">
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-4">
+            <form
+              class="w-auto mx-auto shadow-lg p-4 my-5 rounded"
+              onsubmit="login(event)"
+            >
+              <h3 style="color: #3d77bc;">Login</h3>
+              <hr class="py-2" />
+              <div class="form-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="loginEmail"
+                  placeholder="Email"
+                  required
+                />
+              </div>
+              <div class="form-group pb-2">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="loginPassword"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-outline-light custom-btn">
+                Login
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- end of login form -->
+
+      <!-- register form -->
+      <div class="container" style="display: none;" id="register-form">
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-4">
+            <form
+              class="w-auto mx-auto shadow-lg p-4 my-5 rounded"
+              onsubmit="register(event)"
+            >
+              <h3 style="color: #3d77bc;">Register</h3>
+              <hr class="py-2" />
+              <div class="form-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="registerEmail"
+                  placeholder="Email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="registerUsername"
+                  placeholder="Username"
+                  required
+                />
+              </div>
+              <div class="form-group pb-2">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="registerPassword"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-outline-light custom-btn">
+                Register
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- end of register form -->
+    </div>
+    <!-- end of not login section -->
+
+    <!-- login section -->
+    <div id="login-section" style="display: none;">
+      <!-- user navbar -->
+      <nav
+        class="navbar navbar-light fixed-top"
+        style="background-color: #3d77bc;"
+      >
+        <div class="container d-flex justify-content-between">
+          <a class="navbar-brand text-white" href="#">
+            <img
+              src="todo-icon.png"
+              width="30"
+              height="30"
+              class="d-inline-block align-top"
+            />
+            Simple-Todo
+          </a>
+          <div>
+            <a href="#" class="btn disabled text-light" id="username"></a>
+            <button
+              type="button"
+              class="btn btn-outline-light"
+              style="border-radius: 0;"
+              onclick="logout(event)"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </nav>
+      <!-- end of user navbar -->
+
+      <!-- user page -->
+      <div class="container my-2">
+        <div class="row">
+          <div class="col-lg-3 list-group list-group-flush py-3 px-0">
+            <div class="list-group-item" id="custom-add-btn">
+              <button
+                class="btn btn-outline-light custom-btn"
+                style="border: 1px solid #3d77bc;"
+                onclick="showNewTodoForm(event)"
+              >
+                + New Todo
+              </button>
+            </div>
+            <button class="list-group-item list-group-item-action">
+              All <span class="badge badge-dark">47</span>
+            </button>
+            <button class="list-group-item list-group-item-action">
+              Today <span class="badge badge-dark">14</span>
+            </button>
+            <button class="list-group-item list-group-item-action">
+              Tomorrow <span class="badge badge-dark">4</span>
+            </button>
+            <button class="list-group-item list-group-item-action">
+              This Week <span class="badge badge-dark">0</span>
+            </button>
+            <button class="list-group-item list-group-item-action">
+              This Month <span class="badge badge-dark">2</span>
+            </button>
+            <button
+              class="list-group-item list-group-item-action"
+              id="custom-overdue-btn"
+            >
+              Overdue <span class="badge badge-dark">12</span>
+            </button>
+            <button
+              class="list-group-item list-group-item-action"
+              id="custom-done-btn"
+            >
+              Done <span class="badge badge-dark">9</span>
+            </button>
+          </div>
+
+          <!-- right side -->
+          <div class="col-lg overflow-auto" style="height: 90.1vh;">
+            <!-- todo list -->
+            <div class="py-3 px-0" id="todo-list"></div>
+            <!-- end of todo-list -->
+
+            <!-- add new todo form -->
+            <div class="row d-flex justify-content-center mt-5">
+              <div class="col-lg-8" id="new-todo-form" style="display: none;">
+                <form class="w-auto mx-auto shadow-lg p-4 rounded">
+                  <button
+                    type="button"
+                    class="close"
+                    aria-label="Close"
+                    onclick="showTodoList(event)"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h3 style="color: #3d77bc;">Add New Todo</h3>
+                  <hr class="py-2" />
+                  <div class="form-group pb-2">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Name"
+                      required
+                    />
+                  </div>
+                  <div class="form-group pb-2">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Description"
+                      required
+                    />
+                  </div>
+
+                  <!-- datepicker -->
+                  <div class="form-group pb-2">
+                    <div class="input-group date" id="datetimepicker">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Date"
+                        required
+                      />
+                      <span class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="far fa-calendar-alt"></i>
+                        </span>
+                      </span>
+                    </div>
+                    <small class="form-text text-muted"
+                      >Format MM/DD/YYYY</small
+                    >
+                  </div>
+                  <!-- end of datepicker -->
+
+                  <!-- timepicker -->
+                  <div class="form-group pb-2">
+                    <div
+                      class="input-group bootstrap-timepicker timepicker"
+                      id="timepicker1"
+                    >
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Time"
+                        id="input-timepicker"
+                        required
+                      />
+                      <span class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="far fa-clock"></i>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                  <!-- end of timepicker -->
+
+                  <button
+                    type="submit"
+                    class="btn btn-outline-light custom-btn"
+                  >
+                    Create
+                  </button>
+                </form>
+              </div>
+            </div>
+            <!-- end of todo form -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end of login section -->
+
+    <!-- footer -->
+    <footer class="custom-footer">
+      <div class="container">
+        <p class="m-0" style="color: #3d77bc;">
+          Build with
+          <span class="fas fa-heart"></span> at 2019
+        </p>
+      </div>
+    </footer>
+    <!-- end of footer -->
+
+    <!-- axios -->
+    <script src="src/axios/axios.min.js"></script>
+
+    <!-- Bootstrap & jquery -->
+    <script src="src/jquery/jquery-3.4.1.min.js"></script>
+    <script src="src/moment.min.js"></script>
+    <script src="src/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="src/bootstrap/js/bootstrap-datepicker.min.js"></script>
+    <script src="src/bootstrap/js/bootstrap-timepicker.min.js"></script>
+
+    <!-- sweetalert -->
+    <script src="src/sweetalert/sweetalert2@9.js"></script>
+
+    <!-- custom js -->
+    <script src="src/axios-instance.js"></script>
+    <script src="src/state.js"></script>
+    <script src="src/actions.js"></script>
+    <script src="src/session-handler.js"></script>
+    <script src="src/components-updater.js"></script>
+    <script src="src/components-handler.js"></script>
+    <script src="src/main.js"></script>
+  </body>
+</html>

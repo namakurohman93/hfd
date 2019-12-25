@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="icon" href="todo-icon.png" />
+    <link rel="stylesheet" href="styles/custom.css" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+
+    <!-- font-awesome -->
+    <script src="fontawesome/js/all.min.js"></script>
+
+    <title>Simple-Todo</title>
+  </head>
+  <body>
+    <!-- normal navbar -->
+    <nav
+      id="normal-navbar"
+      class="navbar navbar-light fixed-top"
+      style="background-color: #3d77bc;"
+    >
+      <div class="container d-flex justify-content-between">
+        <a
+          class="navbar-brand text-white"
+          href="#"
+          onclick="showLandingPage(event)"
+        >
+          <img
+            src="todo-icon.png"
+            width="30"
+            height="30"
+            class="d-inline-block align-top"
+          />
+          Simple-Todo
+        </a>
+        <div>
+          <button
+            type="button"
+            class="btn btn-outline-light"
+            style="border-radius: 0;"
+            onclick="showLoginForm(event)"
+          >
+            Login
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-light"
+            style="border-radius: 0;"
+            onclick="showRegisterForm(event)"
+          >
+            Register
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!-- end of normal navbar -->
+
+    <!-- user navbar -->
+    <nav
+      id="user-navbar"
+      class="navbar navbar-light fixed-top"
+      style="background-color: #3d77bc; display: none;"
+    >
+      <div class="container d-flex justify-content-between">
+        <a class="navbar-brand text-white" href="#">
+          <img
+            src="todo-icon.png"
+            width="30"
+            height="30"
+            class="d-inline-block align-top"
+          />
+          Simple-Todo
+        </a>
+        <div>
+          <a href="#" class="btn disabled text-light">Ceritanya udh login</a>
+          <button
+            type="button"
+            class="btn btn-outline-light"
+            style="border-radius: 0;"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!-- end of user navbar -->
+
+    <!-- landing-page -->
+    <div class="container my-5" id="landing-page">
+      <div class="p-5" style="border: 1px solid #3d77bc;">
+        <h1 class="display-4">Simple-Todo</h1>
+        <hr style="border-color: inherit" />
+        <p>Simplify your life</p>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col-md-4">
+          <div class="p-4" style="border: 1px solid #3d77bc;">
+            <h2>Simple <span class="fab fa-wpexplorer"></span></h2>
+            <hr style="border-color: inherit;" />
+            <p>It has simple appeareance so you can use it easly.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="p-4" style="border: 1px solid #3d77bc;">
+            <h2>Easy <span class="fas fa-signature"></span></h2>
+            <hr style="border-color: inherit;" />
+            <p>It has made so easy so everyone can use it.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="p-4" style="border: 1px solid #3d77bc;">
+            <h2>To the point <span class="fab fa-pushed"></span></h2>
+            <hr style="border-color: inherit;" />
+            <p>It only has feature that you really need as Todo-List.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end of landing-page -->
+
+    <!-- login form -->
+    <div class="container" style="display: none;" id="login-form">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-4">
+          <form
+            class="w-auto mx-auto shadow-lg p-4 my-5 rounded"
+            onsubmit="login(event)"
+          >
+            <h3 style="color: #3d77bc;">Login</h3>
+            <hr class="py-2" />
+            <div class="form-group">
+              <input
+                type="email"
+                class="form-control"
+                id="loginEmail"
+                placeholder="Email"
+                required
+              />
+            </div>
+            <div class="form-group pb-2">
+              <input
+                type="password"
+                class="form-control"
+                id="loginPassword"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-outline-light custom-btn">
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- end of login form -->
+
+    <!-- register form -->
+    <div class="container" style="display: none;" id="register-form">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-4">
+          <form
+            class="w-auto mx-auto shadow-lg p-4 my-5 rounded"
+            onsubmit="register(event)"
+          >
+            <h3 style="color: #3d77bc;">Register</h3>
+            <hr class="py-2" />
+            <div class="form-group">
+              <input
+                type="email"
+                class="form-control"
+                id="registerEmail"
+                placeholder="Email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="registerUsername"
+                placeholder="Username"
+                required
+              />
+            </div>
+            <div class="form-group pb-2">
+              <input
+                type="password"
+                class="form-control"
+                id="registerPassword"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-outline-light custom-btn">
+              Register
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- end of register form -->
+
+    <!-- footer -->
+    <footer class="custom-footer">
+      <div class="container">
+        <p class="m-0" style="color: #3d77bc;">
+          Build with
+          <span class="fas fa-heart"></span> at 2019
+        </p>
+      </div>
+    </footer>
+    <!-- end of footer -->
+
+    <!-- axios cdn -->
+    <script src="axios/axios.min.js"></script>
+
+    <!-- Bootstrap & jquery -->
+    <script src="jquery/jquery-3.4.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- sweetalert2 -->
+    <script src="sweetalert/sweetalert2@9.js"></script>
+
+    <!-- custom js -->
+    <script src="src/config.js"></script>
+    <script src="src/session-handler.js"></script>
+    <script src="src/components-handler.js"></script>
+    <script src="src/main.js"></script>
+  </body>
+</html>

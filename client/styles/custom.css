@@ -1,0 +1,103 @@
+body {
+  padding-top: 3rem;
+}
+
+.custom-btn {
+  background-color: #3d77bc !important;
+  border-radius: 0 !important;
+}
+
+.custom-btn:hover {
+  background-color: white !important;
+  border: 1px solid #3d77bc !important;
+  color: #3d77bc !important;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  border: 0;
+  outline: 0;
+  border-radius: 0;
+  border-bottom: 1px solid black;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+  border: 0;
+  outline: 0 none;
+  border-radius: 0;
+  border-bottom: 1px solid #3d77bc;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.custom-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: #e9ecef;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.list-group {
+  background-color: #3d77bc !important;
+  min-height: 90.1vh;
+}
+
+.list-group-item {
+  background-color: #3d77bc !important;
+}
+
+.list-group-item-action {
+  background-color: #3d77bc !important;
+  color: white !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.list-group-item-action:hover {
+  background-color: #e9ecef !important;
+  color: #3d77bc !important;
+}
+
+#custom-add-btn {
+  padding: 0 !important;
+  padding-left: 1rem !important;
+}
+
+#custom-overdue-btn {
+  background-color: #214c80 !important;
+}
+
+#custom-overdue-btn:hover {
+  background-color: #173a63 !important;
+  color: #e9ecef !important;
+}
+
+#custom-done-btn {
+  background-color: #3dbc8d !important;
+}
+
+#custom-done-btn:hover {
+  background-color: #33a67b !important;
+  color: #e9ecef !important;
+}
+
+.custom-border {
+  border: 1px solid #3d77bc;
+}
+
+.todo-card {
+  transition: transform .2s;
+}
+
+.todo-card:hover {
+  transform: scale(1.01);
+  -webkit-box-shadow: 6px 9px 24px -7px rgba(33,76,128,0.8);
+  -moz-box-shadow: 6px 9px 24px -7px rgba(33,76,128,0.8);
+  box-shadow: 6px 9px 24px -7px rgba(33,76,128,0.8);
+}
