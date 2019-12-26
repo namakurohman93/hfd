@@ -7,8 +7,8 @@ const {authenticate} = require('../middlewares/auth');
 router.get('/', function(req, res, next) {
   res.json({message: 'server is alive'});
 });
-router.use('/login', UserController.login);
-router.use('/register', UserController.register);
+router.post('/login', UserController.login);
+router.post('/register', UserController.register);
 
 router.use(authenticate);
 router.use('/users', userRouter);
