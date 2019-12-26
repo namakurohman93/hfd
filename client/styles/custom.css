@@ -105,3 +105,25 @@ input[type="email"]:focus {
 #nothing-todo {
   opacity: 0.2;
 }
+
+#custom-h3 {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 0;
+}
+
+.active {
+  background-color: #e9ecef !important;
+  color: #3d77bc !important;
+}
+
+#custom-overdue-btn.active-custom-overdue-btn {
+  background-color: #173a63 !important;
+  color: #e9ecef !important;
+}
+
+#custom-done-btn.active-custom-done-btn {
+  background-color: #33a67b !important;
+  color: #e9ecef !important;
+}

@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
-    <link rel="icon" href="todo-icon.png" />
+    <link rel="icon" href="assets/todo-icon.png" />
     <link rel="stylesheet" href="styles/custom.css" />
 
     <!-- Bootstrap CSS -->
@@ -42,7 +42,7 @@
             onclick="showLandingPage(event)"
           >
             <img
-              src="todo-icon.png"
+              src="assets/todo-icon.png"
               width="30"
               height="30"
               class="d-inline-block align-top"
@@ -202,7 +202,7 @@
         <div class="container d-flex justify-content-between">
           <a class="navbar-brand text-white" href="#">
             <img
-              src="todo-icon.png"
+              src="assets/todo-icon.png"
               width="30"
               height="30"
               class="d-inline-block align-top"
@@ -237,23 +237,36 @@
                 + New Todo
               </button>
             </div>
-            <button class="list-group-item list-group-item-action">
+            <button
+              class="list-group-item list-group-item-action"
+              onclick="getTodos(event, 'todoList')"
+            >
               All <span class="badge badge-dark" id="all-todo-list">0</span>
             </button>
-            <button class="list-group-item list-group-item-action">
+            <button
+              class="list-group-item list-group-item-action"
+              onclick="getTodos(event, 'todayTodoList')"
+            >
               Today <span class="badge badge-dark" id="today-todo-list">0</span>
             </button>
-            <button class="list-group-item list-group-item-action">
+            <button
+              class="list-group-item list-group-item-action"
+              onclick="getTodos(event, 'tomorrowTodoList')"
+            >
               Tomorrow
               <span class="badge badge-dark" id="tomorrow-todo-list">0</span>
             </button>
-            <button class="list-group-item list-group-item-action">
+            <button
+              class="list-group-item list-group-item-action"
+              onclick="getTodos(event, 'furtherTodoList')"
+            >
               Further
               <span class="badge badge-dark" id="further-todo-list">0</span>
             </button>
             <button
               class="list-group-item list-group-item-action"
               id="custom-overdue-btn"
+              onclick="getTodos(event, 'overdueTodoList')"
             >
               Overdue
               <span class="badge badge-dark" id="overdue-todo-list">0</span>
@@ -261,6 +274,7 @@
             <button
               class="list-group-item list-group-item-action"
               id="custom-done-btn"
+              onclick="getTodos(event, 'doneTodoList')"
             >
               Done <span class="badge badge-dark" id="done-todo-list">0</span>
             </button>

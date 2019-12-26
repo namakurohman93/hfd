@@ -12,12 +12,7 @@ function login(e) {
   const email = $('#loginEmail').val();
   const password = $('#loginPassword').val();
 
-  Swal.fire({
-    title: 'Loading...',
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
+  showSwalLoading('Login...');
 
   ai.post('/login', {email, password})
     .then(({data}) => {
@@ -28,6 +23,7 @@ function login(e) {
       });
       localStorage.setItem('token', data.token);
       localStorage.setItem('username', data.username);
+      localStorage.setItem('view', 'todoList');
 
       emptyLoginForm();
 
@@ -64,12 +60,7 @@ function register(e) {
   const password = $('#registerPassword').val();
   const username = $('#registerUsername').val();
 
-  Swal.fire({
-    title: 'Loading...',
-    onBeforeOpen: () => {
-      Swal.showLoading();
-    },
-  });
+  showSwalLoading('Registering...');
 
   ai.post('/register', {email, password, username})
     .then(({data}) => {
@@ -81,6 +72,7 @@ function register(e) {
 
       localStorage.setItem('token', data.token);
       localStorage.setItem('username', data.username);
+      localStorage.setItem('view', 'todoList');
 
       emptyRegisterForm();
 
@@ -113,8 +105,7 @@ function register(e) {
 function logout(e) {
   if (e) e.preventDefault();
 
-  localStorage.removeItem('username');
-  localStorage.removeItem('token');
+  localStorage.clear();
 
   Swal.fire({
     icon: 'success',

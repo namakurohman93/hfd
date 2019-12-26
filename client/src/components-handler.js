@@ -60,3 +60,12 @@ function showTodoList(e) {
     $('#todo-list').fadeIn(100);
   });
 }
+
+function showSwalLoading(title) {
+  Swal.fire({
+    title: title || 'Loading...',
+    onBeforeOpen: () => {
+      Swal.showLoading();
+    },
+  });
+}

@@ -22,18 +22,16 @@ function initState() {
 
   fetchOwnTodo()
     .then(({data}) => {
+      switchUserSideButton(document.getElementById('all-todo-list').parentNode);
+
       updateState(data);
       updateAllBadges();
       // on init state, show all todos
-      if (state.todoList.length === 0) {
-        updateTodoList(nothingTodoTemplate());
-      } else {
-        let template = ``;
-        state.todoList.forEach(todo => {
-          template += todoCardTemplate(todo);
-        });
-        updateTodoList(template);
-      }
+
+      const template = getTodoListTemplate(localStorage.getItem('view'));
+      template
+        ? updateTodoList(template)
+        : updateTodoList(nothingTodoTemplate());
     })
     .catch(error => {
       updateTodoList(errorTemplate());
@@ -43,6 +41,8 @@ function initState() {
 
 function addNewTodo(e) {
   if (e) e.preventDefault();
+
+  showSwalLoading('Add new todo...');
 
   const todoName = $('#todo-name').val();
   const todoDescription = $('#todo-description').val();
@@ -80,15 +80,11 @@ function addNewTodo(e) {
     .then(({data}) => {
       updateState(data);
       updateAllBadges();
-      if (state.todoList.length === 0) {
-        updateTodoList(nothingTodoTemplate());
-      } else {
-        let template = ``;
-        state.todoList.forEach(todo => {
-          template += todoCardTemplate(todo);
-        });
-        updateTodoList(template);
-      }
+
+      const template = getTodoListTemplate(localStorage.getItem('view'));
+      template
+        ? updateTodoList(template)
+        : updateTodoList(nothingTodoTemplate());
     })
     .catch(error => {
       updateTodoList(errorTemplate());
@@ -108,12 +104,8 @@ function deleteTodo(e, todoId) {
     confirmButtonText: 'Yes, delete it!',
   }).then(result => {
     if (result.value) {
-      Swal.fire({
-        title: 'Loading...',
-        onBeforeOpen: () => {
-          Swal.showLoading();
-        },
-      });
+      showSwalLoading('Deleting...');
+
       ai.delete(`/todos/${todoId}`, {
         headers: {
           token: localStorage.getItem('token'),
@@ -135,15 +127,11 @@ function deleteTodo(e, todoId) {
         .then(({data}) => {
           updateState(data);
           updateAllBadges();
-          if (state.todoList.length === 0) {
-            updateTodoList(nothingTodoTemplate());
-          } else {
-            let template = ``;
-            state.todoList.forEach(todo => {
-              template += todoCardTemplate(todo);
-            });
-            updateTodoList(template);
-          }
+
+          const template = getTodoListTemplate(localStorage.getItem('view'));
+          template
+            ? updateTodoList(template)
+            : updateTodoList(nothingTodoTemplate());
         })
         .catch(error => {
           updateTodoList(errorTemplate());
@@ -158,6 +146,8 @@ function deleteTodo(e, todoId) {
 
 function updateTodoDone(e, todoId) {
   if (e) e.preventDefault();
+
+  showSwalLoading('Updating todo...');
 
   ai.patch(
     `/todos/${todoId}`,
@@ -182,19 +172,16 @@ function updateTodoDone(e, todoId) {
       });
 
       updateTodoList(loadingTemplate());
+
       fetchOwnTodo()
         .then(({data}) => {
           updateState(data);
           updateAllBadges();
-          if (state.todoList.length === 0) {
-            updateTodoList(nothingTodoTemplate());
-          } else {
-            let template = ``;
-            state.todoList.forEach(todo => {
-              template += todoCardTemplate(todo);
-            });
-            updateTodoList(template);
-          }
+
+          const template = getTodoListTemplate(localStorage.getItem('view'));
+          template
+            ? updateTodoList(template)
+            : updateTodoList(nothingTodoTemplate());
         })
         .catch(error => {
           updateTodoList(errorTemplate());
@@ -205,4 +192,29 @@ function updateTodoDone(e, todoId) {
       updateTodoList(errorTemplate());
       error.response ? console.log(error.response) : console.log(error);
     });
+}
+
+function getTodos(e, key) {
+  if (e) e.preventDefault();
+
+  localStorage.setItem('view', key);
+  switchUserSideButton(document.getElementById(viewState[key]).parentNode);
+
+  showTodoList();
+  updateTodoList(loadingTemplate());
+
+  const template = getTodoListTemplate(key);
+  template ? updateTodoList(template) : updateTodoList(nothingTodoTemplate());
+}
+
+function getTodoListTemplate(key) {
+  let template = ``;
+
+  if (state[key].length > 0) {
+    state[key].forEach(todo => {
+      template += todoCardTemplate(todo);
+    });
+  }
+
+  return template;
 }
